@@ -1,0 +1,11 @@
+.topbar {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home-container {
+  text-align: center;
+}
