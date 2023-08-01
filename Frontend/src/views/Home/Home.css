@@ -1,11 +1,93 @@
-.topbar {
-  display: flex;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  justify-content: space-around;
-  align-items: center;
+.main-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 0.7fr 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 1fr;
 }
 
-.home-container {
-  text-align: center;
+.topbar {
+  background-color: bisque;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  border: 1px solid rgb(127, 124, 124);
+}
+
+.topbar .title {
+  font-size: 3.5rem;
+}
+
+.sidebar {
+  background-color: bisque;
+  border: 1px solid rgb(111, 60, 60);
+  grid-row: 2/-1;
+  height: 100%;
+}
+
+.sidebar .people {
+  font-size: 3rem;
+  padding: 2rem 2rem;
+  padding-bottom: 1;
+}
+.content {
+  background-color: rgb(255, 249, 249);
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+  border: 1px solid rgb(111, 60, 60);
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr 0.1fr;
+}
+
+.people-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-item {
+  background-color: rgb(236, 226, 226);
+  padding: 2rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(221, 207, 207);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.content .message-form {
+  display: grid;
+  grid-template-columns: 1fr 0.15fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.message-input input {
+  padding: 1rem;
+  border: 1px solid gainsboro;
+  background-color: rgb(238, 230, 219);
+  border-radius: 1rem;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.send-message-btn button {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid gainsboro;
+  background-color: bisque;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.logout button {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid gainsboro;
+  background-color: bisque;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
 }

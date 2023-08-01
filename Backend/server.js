@@ -2,6 +2,7 @@ const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
+const crypto = require('crypto');
 
 const port = process.env.PORT || 3001;
 
@@ -19,12 +20,6 @@ const io = new Server(httpServer, {
   },
 });
 
-const genrateUniqueId = () => {
-  return Math.random()
-    .toString(36)
-    .substring(2, length + 2);
-};
-
 const connectedUsers = new Map();
 
 io.use((socket, next) => {
@@ -41,13 +36,23 @@ io.on('connection', (socket) => {
   console.log('someone connected to socket: ', socket.id, socket?.username);
 
   socket.on('users', () => {
-    const users = [];
     for (let [id, socket] of io.of('/').sockets) {
       connectedUsers.set(id, { username: socket.username, id: id });
     }
     io.emit('users', Array.from(connectedUsers));
 
     socket.emit('newUser', { id: socket.id, username: socket.username });
+  });
+
+  socket.on('sendMsgToEveryOne', (data) => {
+    console.log('a message came from client', data);
+    console.log('connected users are ', connectedUsers);
+    const sentBy = connectedUsers.get(data.id);
+    io.emit('receiveMsgFromEveryOne', {
+      id: crypto.randomUUID(),
+      sentBy,
+      message: data?.message,
+    });
   });
 
   // Listen for the 'disconnect' event from the client

@@ -1,0 +1,35 @@
+.message-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+}
+
+.message-item:last-child {
+  margin-bottom: 3rem;
+}
+
+.user-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-info .username {
+  font-size: 2.2rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.user-message {
+  background-color: #bfb6b6;
+  border-radius: 1px solid #817d7d;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-left: 5rem;
+}
+
+.user-icon svg {
+  width: 4rem;
+  height: 4.4rem;
+}
