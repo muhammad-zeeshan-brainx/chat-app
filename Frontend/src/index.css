@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.root-element {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+.body-container {
+  height: 100%;
+  background-color: whitesmoke;
+}
+
+#root {
+  height: inherit;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}

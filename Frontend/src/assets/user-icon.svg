@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_21089" data-name="Group 21089" transform="translate(-32 3077)">
+    <g id="Rectangle_5257" data-name="Rectangle 5257" transform="translate(32 -3077)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <g id="Group_21087" data-name="Group 21087" transform="translate(0 0.001)">
+      <g id="icon_16px_account" data-name="icon/16px/account" transform="translate(36 -3073.001)">
+        <path id="Vector" d="M8,0a8,8,0,0,1,5.333,13.964,7.387,7.387,0,0,1-.623.5,8,8,0,0,1-9.425,0,7.427,7.427,0,0,1-.623-.5A8,8,0,0,1,8,0ZM8,2.858a2.286,2.286,0,1,0,1.617.67A2.286,2.286,0,0,0,8,2.858H8ZM8,14.29A6.287,6.287,0,0,0,12.873,12a5.144,5.144,0,0,0-9.717,0A6.287,6.287,0,0,0,8,14.29Z" transform="translate(0)" fill="#7b809a"/>
+      </g>
+    </g>
+  </g>
+</svg>
