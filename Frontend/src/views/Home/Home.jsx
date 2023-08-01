@@ -4,18 +4,17 @@ import './Home.css';
 import socket from '../../services/socket';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import MessageItem from '../../components/Home/MessageItem';
 import { useNavigate } from 'react-router-dom';
 
 function Home({ setShouldSocketConnect }) {
   const navigate = useNavigate();
-  console.log('home component');
   const [connectedUsers, setConnectedUsers] = useState(new Map());
   useEffect(() => {
     // Add event listener for the "users" event
     socket.emit('users');
 
     socket.on('users', (users) => {
-      console.log('users event', users);
       setConnectedUsers(new Map(users));
     });
 
@@ -24,7 +23,6 @@ function Home({ setShouldSocketConnect }) {
     });
 
     socket.on('userDisconnected', (user) => {
-      console.log('userdisconnected event occur', user);
       removeUser(user.id);
     });
 
@@ -39,11 +37,6 @@ function Home({ setShouldSocketConnect }) {
     socket.disconnect();
     setShouldSocketConnect(false);
     navigate('/');
-  };
-  const genrateUniqueId = () => {
-    return Math.random()
-      .toString(36)
-      .substring(2, length + 2);
   };
 
   const addUser = (user) => {
@@ -62,18 +55,37 @@ function Home({ setShouldSocketConnect }) {
 
   return (
     <Fragment>
-      <div className='topbar'>
-        <h1 className='title'>Chat APP</h1>
-        <div className='logout'>
-          <button onClick={handleLeave}>Leave</button>
+      <div className='main-container'>
+        <div className='topbar'>
+          <h1 className='title'>Chat APP</h1>
+          <div className='logout'>
+            <button onClick={handleLeave}>Leave</button>
+          </div>
         </div>
-      </div>
-      <div className='home-container'>
-        <h1>Chatss</h1>
-        {connectedUsers?.size &&
-          Array.from(connectedUsers.values()).map((user) => (
-            <div key={user?.id}>{user.username}</div>
-          ))}
+        <div className='sidebar'>
+          <div className='people'>People</div>
+          <ul className='people-list'>
+            {connectedUsers?.size &&
+              Array.from(connectedUsers.values()).map((user) => (
+                <li className='user-item' key={user?.id}>
+                  {user.username}
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div className='content'>
+          <div className='messages-container'>
+            <MessageItem />
+          </div>
+          <form className='message-form'>
+            <div className='message-input'>
+              <input type='text' placeholder='Write Something'></input>
+            </div>
+            <div className='send-message-btn'>
+              <button type='submit'>Send</button>
+            </div>
+          </form>
+        </div>
       </div>
     </Fragment>
   );

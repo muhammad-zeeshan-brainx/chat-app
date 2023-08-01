@@ -43,13 +43,8 @@ io.on('connection', (socket) => {
   socket.on('users', () => {
     const users = [];
     for (let [id, socket] of io.of('/').sockets) {
-      // users.push({
-      //   id: id,
-      //   username: socket.username,
-      // });
       connectedUsers.set(id, { username: socket.username, id: id });
     }
-    console.log('all users are,', connectedUsers);
     io.emit('users', Array.from(connectedUsers));
 
     socket.emit('newUser', { id: socket.id, username: socket.username });
@@ -60,13 +55,9 @@ io.on('connection', (socket) => {
     console.log('A user disconnected.');
 
     // Find the disconnected user's username using their socket.id
-    console.log('connected users values', connectedUsers.values());
-
     const disconnectedUser = connectedUsers.get(socket.id);
 
     // If the disconnectedUser is found, get their username
-    console.log('diconected***', disconnectedUser);
-
     const disconnectedUsername = disconnectedUser
       ? disconnectedUser.username
       : null;
